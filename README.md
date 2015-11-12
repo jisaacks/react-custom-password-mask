@@ -1,6 +1,6 @@
 # React Custom Password Mask
 
-Use a custome mask (a char other then the default bullet) for a password field.
+The idea is to make it a drop in replacement for `<input type="hidden"/>` while being able to use any masking char (instead of the default bullet.)
 
 ### Install
 
@@ -12,25 +12,33 @@ npm install react-custom-password-mask --save
 
 ```javascript
 import React from 'react';
+import serialize from 'form-serialize';
 import MaskInput from 'react-custom-password-mask';
 
 export default React.createClass({
 
+  submitHandler(event) {
+    event.preventDefault();
+
+    // Using ref: secret
+    console.log("Using ref:", this.refs.pswd.value);
+
+    // From form: password=secret
+    console.log("From form:", serialize(this.refs.form));
+  },
+
   render() {
     return (
-      <form>
-        <MaskInput ref="pswd" mask="X" name="password/>
-        <button onClick={() => console.log(this.refs.pswd.value)}>
-          Submit
-        </button>
+      <form ref="form" onSubmit={this.submitHandler}>
+        <MaskInput ref="pswd" name="password" mask="X"/>
+        <button>Submit</button>
       </form>
     );
   }
 
-});
-```
+}); 
 
-The idea is to make it a drop in replacement for `<input type="hidden"/>` while being able to use any masking char.
+```
 
 You can also use multibyte chars:
 
