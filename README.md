@@ -30,6 +30,8 @@ export default React.createClass({
 });
 ```
 
+The idea is to make it a drop in replacement for `<input type="hidden"/>` while being able to use any masking char.
+
 You can also use multibyte chars:
 
 ```javascript
