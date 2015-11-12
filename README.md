@@ -18,12 +18,12 @@ export default React.createClass({
 
   render() {
     return (
-      <div>
-        <MaskInput ref="pswd" mask="X"/>
+      <form>
+        <MaskInput ref="pswd" mask="X" name="password/>
         <button onClick={() => console.log(this.refs.pswd.value)}>
-          Click Me
+          Submit
         </button>
-      </div>
+      </form>
     );
   }
 
@@ -33,5 +33,5 @@ export default React.createClass({
 You can also use multibyte chars:
 
 ```javascript
-<MaskInput ref="pswd" mask="💩"/>
+<MaskInput mask="💩"/>
 ```
