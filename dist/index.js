@@ -73,14 +73,33 @@ var PasswordField = (function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('input', {
-        type: 'text',
-        value: this.getMask(),
-        onChange: this.changeHandler.bind(this), __source: {
-          fileName: '../../../../../src/index.js',
-          lineNumber: 42
-        }
-      });
+      return _react2.default.createElement(
+        'span',
+        {
+          __source: {
+            fileName: '../../../../../src/index.js',
+            lineNumber: 42
+          }
+        },
+        _react2.default.createElement('input', {
+          type: 'text',
+          className: this.props.className,
+          id: this.props.id,
+          value: this.getMask(),
+          onChange: this.changeHandler.bind(this), __source: {
+            fileName: '../../../../../src/index.js',
+            lineNumber: 43
+          }
+        }),
+        _react2.default.createElement('input', {
+          type: 'hidden',
+          value: this.value,
+          name: this.props.name, __source: {
+            fileName: '../../../../../src/index.js',
+            lineNumber: 49
+          }
+        })
+      );
     }
   }, {
     key: 'value',

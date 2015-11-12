@@ -39,10 +39,18 @@ export default class PasswordField extends React.Component {
 
   render() {
     return (
-      <input 
-        type="text" 
-        value={this.getMask()} 
-        onChange={::this.changeHandler}/>
+      <span>
+        <input 
+          type="text" 
+          className={this.props.className}
+          id={this.props.id}
+          value={this.getMask()} 
+          onChange={::this.changeHandler}/>
+        <input
+          type="hidden"
+          value={this.value}
+          name={this.props.name}/>
+      </span>
     );
   }
 }
