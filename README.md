@@ -43,5 +43,5 @@ export default React.createClass({
 You can also use multibyte chars:
 
 ```javascript
-<MaskInput mask="💩"/>
+<CustomMaskedPassword mask="💩"/>
 ```
