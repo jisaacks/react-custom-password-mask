@@ -11,9 +11,13 @@ export default class PasswordField extends React.Component {
     return this.state.value;
   }
 
-  getMask() {
+  get mask() {
     let {mask="•"} = this.props;
-    return mask.repeat(this.decode().length);
+    return mask[0];
+  }
+
+  get maskedValue() {
+    return this.mask.repeat(this.decode().length);
   }
 
   encode(str=this.value) {
@@ -27,14 +31,12 @@ export default class PasswordField extends React.Component {
   changeHandler(e) {
     let oldChars = this.decode();
     let newChars = this.decode(e.target.value);
-    let newValue;
-    if (oldChars.length < newChars.length) {
-      let addedChars = newChars.slice(oldChars.length);
-      newValue = [].concat(oldChars, addedChars);
-    } else {
-      newValue = oldChars.slice(0, newChars.length);
-    }
-    this.setState({value: this.encode(newValue)});
+    let maskCode = this.decode(this.mask)[0];
+    let newValue = this.encode(newChars.map((c,i) => (
+      c === maskCode ? (oldChars[i] || c) : c
+    )));
+
+    this.setState({value: newValue});
   }
 
   render() {
@@ -44,7 +46,7 @@ export default class PasswordField extends React.Component {
           type="text" 
           className={this.props.className}
           id={this.props.id}
-          value={this.getMask()} 
+          value={this.maskedValue} 
           onChange={::this.changeHandler}/>
         <input
           type="hidden"

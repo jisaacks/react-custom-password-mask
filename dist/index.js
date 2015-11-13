@@ -35,14 +35,6 @@ var PasswordField = (function (_React$Component) {
   }
 
   _createClass(PasswordField, [{
-    key: 'getMask',
-    value: function getMask() {
-      var _props$mask = this.props.mask;
-      var mask = _props$mask === undefined ? "•" : _props$mask;
-
-      return mask.repeat(this.decode().length);
-    }
-  }, {
     key: 'encode',
     value: function encode() {
       var str = arguments.length <= 0 || arguments[0] === undefined ? this.value : arguments[0];
@@ -61,14 +53,12 @@ var PasswordField = (function (_React$Component) {
     value: function changeHandler(e) {
       var oldChars = this.decode();
       var newChars = this.decode(e.target.value);
-      var newValue = undefined;
-      if (oldChars.length < newChars.length) {
-        var addedChars = newChars.slice(oldChars.length);
-        newValue = [].concat(oldChars, addedChars);
-      } else {
-        newValue = oldChars.slice(0, newChars.length);
-      }
-      this.setState({ value: this.encode(newValue) });
+      var maskCode = this.decode(this.mask)[0];
+      var newValue = this.encode(newChars.map(function (c, i) {
+        return c === maskCode ? oldChars[i] || c : c;
+      }));
+
+      this.setState({ value: newValue });
     }
   }, {
     key: 'render',
@@ -78,17 +68,17 @@ var PasswordField = (function (_React$Component) {
         {
           __source: {
             fileName: '../../../../../src/index.js',
-            lineNumber: 42
+            lineNumber: 44
           }
         },
         _react2.default.createElement('input', {
           type: 'text',
           className: this.props.className,
           id: this.props.id,
-          value: this.getMask(),
+          value: this.maskedValue,
           onChange: this.changeHandler.bind(this), __source: {
             fileName: '../../../../../src/index.js',
-            lineNumber: 43
+            lineNumber: 45
           }
         }),
         _react2.default.createElement('input', {
@@ -96,7 +86,7 @@ var PasswordField = (function (_React$Component) {
           value: this.value,
           name: this.props.name, __source: {
             fileName: '../../../../../src/index.js',
-            lineNumber: 49
+            lineNumber: 51
           }
         })
       );
@@ -105,6 +95,19 @@ var PasswordField = (function (_React$Component) {
     key: 'value',
     get: function get() {
       return this.state.value;
+    }
+  }, {
+    key: 'mask',
+    get: function get() {
+      var _props$mask = this.props.mask;
+      var mask = _props$mask === undefined ? "•" : _props$mask;
+
+      return mask[0];
+    }
+  }, {
+    key: 'maskedValue',
+    get: function get() {
+      return this.mask.repeat(this.decode().length);
     }
   }]);
 
