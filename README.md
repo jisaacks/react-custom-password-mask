@@ -40,9 +40,9 @@ export default React.createClass({
 
 ```
 
-__Screenshot:__
+__Screenshot:__ _with text "secret"_
 
-[!](./screenshots/screenshot-x.png)
+<img src="./screenshots/screenshot-x.png" width="241">
 
 You can also use multibyte chars:
 
@@ -50,6 +50,6 @@ You can also use multibyte chars:
 <CustomMaskedPassword mask="💩"/>
 ```
 
-__Screenshot:__
+__Screenshot:__ _with text "secret"_
 
-[!](./screenshots/screenshot-poo.png)
+<img src="./screenshots/screenshot-poo.png" width="242">
