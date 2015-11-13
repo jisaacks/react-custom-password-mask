@@ -1,6 +1,6 @@
 # React Custom Password Mask
 
-The idea is to make it a drop in replacement for `<input type="hidden"/>` while being able to use any masking char (instead of the default bullet.)
+The idea is to make it a drop in replacement for `<input type="password"/>` while being able to use any masking char (instead of the default bullet.)
 
 ### Install
 
