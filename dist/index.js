@@ -102,7 +102,7 @@ var PasswordField = (function (_React$Component) {
       var _props$mask = this.props.mask;
       var mask = _props$mask === undefined ? "•" : _props$mask;
 
-      return mask[0];
+      return this.encode([this.decode(mask)[0]]);
     }
   }, {
     key: 'maskedValue',

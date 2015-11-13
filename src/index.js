@@ -13,7 +13,7 @@ export default class PasswordField extends React.Component {
 
   get mask() {
     let {mask="•"} = this.props;
-    return mask[0];
+    return this.encode([this.decode(mask)[0]]);
   }
 
   get maskedValue() {
