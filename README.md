@@ -40,8 +40,16 @@ export default React.createClass({
 
 ```
 
+__Screenshot:__
+
+[!](./screenshots/screenshot-x.png)
+
 You can also use multibyte chars:
 
 ```javascript
 <CustomMaskedPassword mask="💩"/>
 ```
+
+__Screenshot:__
+
+[!](./screenshots/screenshot-poo.png)
