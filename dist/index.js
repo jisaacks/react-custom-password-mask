@@ -22,19 +22,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var PasswordField = (function (_React$Component) {
-  _inherits(PasswordField, _React$Component);
+var CustomMaskedPassword = (function (_React$Component) {
+  _inherits(CustomMaskedPassword, _React$Component);
 
-  function PasswordField(props) {
-    _classCallCheck(this, PasswordField);
+  function CustomMaskedPassword(props) {
+    _classCallCheck(this, CustomMaskedPassword);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PasswordField).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CustomMaskedPassword).call(this, props));
 
     _this.state = { value: props.value || '' };
     return _this;
   }
 
-  _createClass(PasswordField, [{
+  _createClass(CustomMaskedPassword, [{
     key: 'encode',
     value: function encode() {
       var str = arguments.length <= 0 || arguments[0] === undefined ? this.value : arguments[0];
@@ -111,8 +111,8 @@ var PasswordField = (function (_React$Component) {
     }
   }]);
 
-  return PasswordField;
+  return CustomMaskedPassword;
 })(_react2.default.Component);
 
-exports.default = PasswordField;
+exports.default = CustomMaskedPassword;
 

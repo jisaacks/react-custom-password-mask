@@ -13,7 +13,7 @@ npm install react-custom-password-mask --save
 ```javascript
 import React from 'react';
 import serialize from 'form-serialize';
-import MaskInput from 'react-custom-password-mask';
+import CustomMaskedPassword from 'react-custom-password-mask';
 
 export default React.createClass({
 
@@ -30,7 +30,7 @@ export default React.createClass({
   render() {
     return (
       <form ref="form" onSubmit={this.submitHandler}>
-        <MaskInput ref="pswd" name="password" mask="X"/>
+        <CustomMaskedPassword ref="pswd" name="password" mask="X"/>
         <button>Submit</button>
       </form>
     );

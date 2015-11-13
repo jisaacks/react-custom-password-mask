@@ -1,7 +1,7 @@
 import React from 'react';
 import punycode from 'punycode';
 
-export default class PasswordField extends React.Component {
+export default class CustomMaskedPassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: props.value || ''};
