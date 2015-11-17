@@ -124,4 +124,40 @@ describe('CustomMaskedPassword', () => {
 
   });
 
+  it('handles mutlibyte chars as input', () => {
+
+    const MASK  = '*';
+    const VALUE = 'abcdef';
+
+    let {shownInput, hiddenInput, maskedValue} = inject(VALUE, MASK);
+
+    expect(hiddenInput.value).to.equal('abcdef');
+    expect(shownInput.value ).to.equal('******');
+
+    shownInput.value = 'abcdef☰';
+    TestUtils.Simulate.change(shownInput);
+    
+    expect(hiddenInput.value).to.equal('abcdef☰');
+    expect(shownInput.value ).to.equal('*******');
+
+  });
+
+  it('handles mutlibyte chars as input with multibyte mask', () => {
+
+    const MASK  = '☃';
+    const VALUE = 'abcdef';
+
+    let {shownInput, hiddenInput, maskedValue} = inject(VALUE, MASK);
+
+    expect(hiddenInput.value).to.equal('abcdef');
+    expect(shownInput.value ).to.equal('☃☃☃☃☃☃');
+
+    shownInput.value = 'abcdef☰';
+    TestUtils.Simulate.change(shownInput);
+    
+    expect(hiddenInput.value).to.equal('abcdef☰');
+    expect(shownInput.value ).to.equal('☃☃☃☃☃☃☃');
+
+  });
+
 });
